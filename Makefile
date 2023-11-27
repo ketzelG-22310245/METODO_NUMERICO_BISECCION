@@ -1,5 +1,11 @@
-bin/Metodo_biseccion: src/main.cpp | bin
-	g++ $< -o $@
+CXX = g++
+TARGET = bin/Metodo_biseccion
+SRC = src/main.cpp
+
+all: $(TARGET)
+
+$(TARGET): $(SRC) | bin
+	$(CXX) $< -o $@
 	./$@
 
 bin:
