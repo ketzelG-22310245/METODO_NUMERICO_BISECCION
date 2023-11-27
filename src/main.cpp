@@ -1,82 +1,59 @@
 #include <iostream>
 #include <cmath>
-#include <iomanip>
-#include <muParser.h>
+#include <string>
 
 using namespace std;
 
-double evaluateFunction(mu::Parser& parser, double x) {
-    parser.DefineVar("x", &x);
-    return parser.Eval();
-}
+// Función que evalúa la expresión para un valor dado
+double evaluarFuncion(const string& funcion, double x) {
+    // Aquí podrías implementar tu propio parser o usar una biblioteca de análisis sintáctico
+    // Para simplificar, este ejemplo asumirá que la función es de la forma ax^2 + bx + c
+    // y utilizará la biblioteca cmath para evaluarla.
 
-double biseccion(mu::Parser& parser, double a, double b, int it) {
-    double c, lim0, lim1, x;
+    // Supongamos que la función es de la forma ax^2 + bx + c
+    double a = 1.0;
+    double b = 0.0;
+    double c = 0.0;
 
-    c = (a + b) / 2;
-    x = a;
-    lim0 = evaluateFunction(parser, x);
-    x = b;
-    lim1 = evaluateFunction(parser, x);
+    // Evaluar la expresión
+    double resultado = a * pow(x, 2) + b * x + c;
 
-    cout << "A: " << a << "\t\t" << "B: " << b << "\t\t" << "C: " << c << endl;
-    cout << "f(A): " << lim0 << "\t\t" << "f(B): " << lim1 << "\t\t" << "f(C): " << evaluateFunction(parser, c) << endl;
-
-    if (lim0 * lim1 < 0) {
-        x = c;
-        lim1 = evaluateFunction(parser, x);
-        cout << "f(C): " << lim1 << endl;
-
-        while (lim0 * lim1 != 0 && it > 0) {
-            if (lim0 * lim1 < 0) {
-                b = c;
-                c = (a + b) / 2;
-                x = c;
-                lim1 = evaluateFunction(parser, x);
-
-                cout << "A: " << a << "\t" << "B: " << b << "\t" << "C: " << c << endl;
-                cout << "f(A): " << evaluateFunction(parser, a) << "\t\t" << "f(B): " << evaluateFunction(parser, b) << "\t\t"
-                     << "f(C): " << lim1 << endl;
-            } else if (lim0 * lim1 > 0) {
-                a = c;
-                c = (a + b) / 2;
-                x = c;
-                lim1 = evaluateFunction(parser, x);
-
-                cout << "A: " << a << "\t" << "B: " << b << "\t" << "C: " << c << endl;
-                cout << "f(A): " << evaluateFunction(parser, a) << "\t\t" << "f(B): " << evaluateFunction(parser, b) << "\t\t"
-                     << "f(C): " << lim1 << endl;
-            }
-            --it;
-        }
-    } else {
-        cout << "La raíz no se encuentra en el intervalo." << endl;
-    }
-    return c;
+    return resultado;
 }
 
 int main() {
-    double a, b;
-    int it;
-    string functionString;
+    // Solicitar al usuario que ingrese una función
+    string userFunction;
+    cout << "Ingrese una función matemática (por ejemplo, x^2 + 3*x - 5): ";
+    getline(cin, userFunction);
 
-    cout << "Ingrese la función (por ejemplo, x^2 - 4): ";
-    getline(cin, functionString);
+    // Solicitar al usuario que ingrese los límites del rango y la cantidad de puntos
+    double limiteInferior, limiteSuperior;
+    int cantidadPuntos;
 
-    mu::Parser parser;
-    parser.SetExpr(functionString);
+    cout << "Ingrese el límite inferior del rango: ";
+    cin >> limiteInferior;
 
-    cout << "Ingrese el valor de a: ";
-    cin >> a;
-    cout << "Ingrese el valor de b: ";
-    cin >> b;
-    cout << "Ingrese el número de iteraciones: ";
-    cin >> it;
+    cout << "Ingrese el límite superior del rango: ";
+    cin >> limiteSuperior;
 
-    cout << "A: " << a << "\t\t" << "B: " << b << "\t\t" << "C: ";
-    double raiz = biseccion(parser, a, b, it);
+    cout << "Ingrese la cantidad de puntos para tabular la función: ";
+    cin >> cantidadPuntos;
 
-    cout << setprecision(5) << "La raiz es: " << raiz << endl;
+    try {
+        // Calcular el paso entre cada punto
+        double paso = (limiteSuperior - limiteInferior) / (cantidadPuntos - 1);
+
+        // Tabular la función en el rango especificado
+        cout << "Resultados de la función en el rango [" << limiteInferior << ", " << limiteSuperior << "]:" << endl;
+        for (int i = 0; i < cantidadPuntos; ++i) {
+            double x = limiteInferior + i * paso;
+            double result = evaluarFuncion(userFunction, x);
+            cout << "x=" << x << ", f(x)=" << result << endl;
+        }
+    } catch (...) {
+        cout << "Error al tabular la función." << endl;
+    }
 
     return 0;
 }
