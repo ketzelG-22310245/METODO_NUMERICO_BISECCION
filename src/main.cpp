@@ -1,56 +1,19 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
-#include <SDL.h>
+#include "ventana.cpp"
 
 #define PRECISION 5
 
 using namespace std;
-
-// Declare SDL_Window and SDL_Surface variables
-SDL_Window* window = NULL;
-SDL_Surface* screenSurface = NULL;
 
 double f(double x);
 void imprimePuntos(double a, double b);
 
 int main()
 {
-    // Initialize SDL
-    if (SDL_Init(SDL_INIT_VIDEO) < 0)
-    {
-        cout << "SDL could not initialize! SDL_Error: " << SDL_GetError() << endl;
-        return 1;
-    }
-
-    // Create window
-window = SDL_CreateWindow("Metodo biseccion", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_SHOWN);
-if (window == NULL)
-{
-    cout << "Window could not be created! SDL_Error: " << SDL_GetError() << endl;
-    return 1;
-}
-
-    // Get window surface
-    screenSurface = SDL_GetWindowSurface(window);
-
-    // Fill the surface white
-    SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xFF, 0xFF, 0xFF));
-
-    // Update the surface
-    SDL_UpdateWindowSurface(window);
-
-    // Hack to get window to stay up
-    SDL_Event e;
-    bool quit = false;
-    while (quit == false)
-    {
-        while (SDL_PollEvent(&e))
-        {
-            if (e.type == SDL_QUIT)
-                quit = true;
-        }
-    }
+    ventana v;
+    ventana.SDL_main();
 
    cout << setprecision(PRECISION); // Establecemos la precisión
    
@@ -114,12 +77,6 @@ if (window == NULL)
    
    cin.get();
    cin.get();
-
-   // Destroy window
-    SDL_DestroyWindow(window);
-
-    // Quit SDL subsystems
-    SDL_Quit();
 
    return 0;
 }
