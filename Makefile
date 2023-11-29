@@ -11,6 +11,8 @@ bin/Metodo_biseccion: src/main.cpp src/ventana.cpp | bin
 bin:
 	mkdir bin
 
-.PHONY: clean
 clean:
-	rm -rf bin
+	rm -f $(EXE_FILES)
+
+.PHONY: all clean
+.PHONY: run-%

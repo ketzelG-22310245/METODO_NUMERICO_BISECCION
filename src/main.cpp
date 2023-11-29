@@ -3,100 +3,102 @@
 #include <cmath>
 #include "ventana.cpp"
 
-#define PRECISION 5
+#define PRECISION 2
 
 using namespace std;
 
 double f(double x);
 void imprimePuntos(double a, double b);
 
-int main()
-{
-    ventana v;
-    ventana.SDL_main();
+int main() {
 
-   cout << setprecision(PRECISION); // Establecemos la precisión
-   
-   double a, b, tolerancia;
-   
-   cout << "\nCalculo de las raices de una funcion aplicando el metodo de la biseccion" << endl;
-   cout << "\nIngrese el intervalo inicial [a, b]" << endl;
-   cout << "\na = ";
-   cin >> a;
-   
-   cout << "b = ";
-   cin >> b;
-   
-   imprimePuntos(a, b);
-   
-   cout << "\nEscoja el intervalo adecuado" << endl;
-   cout << "\na = ";
-   cin >> a;
-   
-   cout << "b = ";
-   cin >> b;
-   
-   // [a, b]
-   float xr; // raiz de la función
-   float xr_antiguo = 0.0; // para almacenar el valor anterior de xr
-   
-   if (f(a) * f(b) > 0) {
-      cout << "\nNo se puede aplicar el metodo de la biseccion\n";
-      cout << "porque f(" << a << ") y f(" << b << ") tienen el mismo signo" << endl;
-   } else {
-      cout << "Tolerancia = ";
-      cin >> tolerancia;
-      cout << "\na\t\t\tb\t\t\tc\t\t\tf(c)\t\t\tEr\n" << endl;
-      
-      do {
-         xr = (a + b) / 2.0;
-         cout << a << "\t\t\t" << b << "\t\t\t" << xr << "\t\t\t";
-         cout << f(xr) << "\t\t\t";
+    cout << setprecision(PRECISION); // Establecemos la precisión
 
-         // Calcular el error relativo
-         float error_rel = (abs(xr - xr_antiguo) / abs(xr)) * 100.0;
-         cout << error_rel << "%" << endl;
+    double a, b, tolerancia;
 
-         // Vemos si cumple o no cumple
-         if (abs(f(xr)) <= tolerancia) {
-            cout << "\n\nPara una tolerancia " << tolerancia << " la raiz de f es " << xr << endl;
-            break;
-         } else {
-            if (f(xr) * f(a) > 0) {
-               a = xr;
-            } else if (f(xr) * f(b) > 0) {
-               b = xr;
+    cout << "\nCalculo de las raíces de una función aplicando el método de la bisección" << endl;
+    cout << "\nIngrese el intervalo inicial [a, b]" << endl;
+    cout << "\na = ";
+    cin >> a;
+
+    cout << "b = ";
+    cin >> b;
+
+    imprimePuntos(a, b);
+
+    cout << "\nEscoja el intervalo adecuado" << endl;
+    cout << "\na = ";
+    cin >> a;
+
+    cout << "b = ";
+    cin >> b;
+
+    // [a, b]
+    float xr;               // raíz de la función
+    float xr_antiguo = 0.0;  // para almacenar el valor anterior de xr
+
+    //const double tolerancia = 1e-5;  // Ajusta la tolerancia según tus necesidades
+    const int MAX_ITERATIONS = 25; // Ajusta el límite máximo de iteraciones según tus necesidades
+
+    if (f(a) * f(b) > 0) {
+        cout << "\nNo se puede aplicar el método de la bisección\n";
+        cout << "porque f(" << a << ") y f(" << b << ") tienen el mismo signo" << endl;
+    } else {
+        cout << "Tolerancia = " << tolerancia << endl;
+        cout << "\na\t\t\tb\t\t\tc\t\t\tf(c)\t\t\tEr\n"<< fixed << setprecision(PRECISION) << endl;
+
+        int iterationCount = 0; // Contador para realizar un seguimiento de las iteraciones
+
+        do {
+            xr = (a + b) / 2.0;
+            cout << a << "\t\t\t" << b << "\t\t\t" << xr << "\t\t\t";
+            cout << f(xr) << "\t\t\t";
+
+            float error_rel = (abs(xr - xr_antiguo) / abs(xr)) * 100.0;
+            cout << fixed << setprecision(PRECISION) << error_rel << "%" << endl;
+
+            if (abs(f(xr)) <= tolerancia || iterationCount >= MAX_ITERATIONS) {
+                if (abs(f(xr)) <= tolerancia) {
+                    cout << "\n\nPara una tolerancia " << tolerancia << " la raíz de f es " << xr << endl;
+                } else {
+                    cout << "\n\nSe alcanzó el número máximo de iteraciones (" << MAX_ITERATIONS << ")." << endl;
+                }
+                break;
+            } else {
+                if (f(xr) * f(a) > 0) {
+                    a = xr;
+                } else if (f(xr) * f(b) > 0) {
+                    b = xr;
+                }
             }
-         }
 
-         // Actualizar el valor anterior de xr
-         xr_antiguo = xr;
+            xr_antiguo = xr;
+            iterationCount++;
 
-      } while (1);
-   }
-   
-   cin.get();
-   cin.get();
+        } while (true);
+    }
 
-   return 0;
+    cin.get();
+    cin.get();
+
+    return 0;
 }
 
-double f(double x) 
-{
-   return pow(x,3) - 7;
+double f(double x) {
+    return x - 4*sin(x);
 }
 
 #define INTERVALOS 6
-void imprimePuntos(double a, double b)
-{
-   int puntos = INTERVALOS + 1;
-   
-   double ancho = (b - a) / INTERVALOS;
-   
-   cout << "\n";
-   cout << "\tx\tf(x)\n" << endl;
-   for (int i = 0; i < puntos; i++) {
-      cout << "\t" << a << "\t" << f(a) << endl;
-      a = a + ancho;
-   }
+void imprimePuntos(double a, double b) {
+    int puntos = INTERVALOS + 1;
+
+    double ancho = (b - a) / INTERVALOS;
+
+    cout << "\n";
+    cout << "\tx\tf(x)\n"
+         << endl;
+    for (int i = 0; i < puntos; i++) {
+        cout << "\t" << a << "\t" << f(a) << endl;
+        a = a + ancho;
+    }
 }

@@ -1,21 +1,22 @@
-#include "include/Ventana.hpp"
+#include "SDL.h"
+#include <iostream>  // Agrega esta línea
 
 int SDL_main(int argc, char* args[])
 {
     if (SDL_Init(SDL_INIT_VIDEO) < 0)
     {
-        cout << "SDL could not initialize! SDL_Error: " << SDL_GetError() << endl;
+        std::cout << "SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
         return 1;
     }
 
-    window = SDL_CreateWindow("Metodo biseccion", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_SHOWN);
+    SDL_Window* window = SDL_CreateWindow("Metodo biseccion", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_SHOWN);
     if (window == NULL)
     {
-        cout << "Window could not be created! SDL_Error: " << SDL_GetError() << endl;
+        std::cout << "Window could not be created! SDL_Error: " << SDL_GetError() << std::endl;
         return 1;
     }
 
-    screenSurface = SDL_GetWindowSurface(window);
+    SDL_Surface* screenSurface = SDL_GetWindowSurface(window);
     SDL_FillRect(screenSurface, NULL, SDL_MapRGB(screenSurface->format, 0xFF, 0xFF, 0xFF));
     SDL_UpdateWindowSurface(window);
 
