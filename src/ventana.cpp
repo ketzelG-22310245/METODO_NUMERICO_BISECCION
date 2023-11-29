@@ -1,5 +1,5 @@
 #include "SDL.h"
-#include <iostream>  // Agrega esta línea
+#include <iostream>
 
 int SDL_main(int argc, char* args[])
 {
