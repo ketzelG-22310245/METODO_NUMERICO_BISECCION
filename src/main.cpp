@@ -3,7 +3,7 @@
 #include <cmath>
 #include "ventana.cpp"
 
-#define PRECISION 2
+#define PRECISION 3
 
 using namespace std;
 
@@ -38,7 +38,7 @@ int main() {
     float xr_antiguo = 0.0;  // para almacenar el valor anterior de xr
 
     //const double tolerancia = 1e-5;  // Ajusta la tolerancia según tus necesidades
-    const int MAX_ITERATIONS = 25; // Ajusta el límite máximo de iteraciones según tus necesidades
+    const int MAX_ITERATIONS = 100; // Ajusta el límite máximo de iteraciones según tus necesidades
 
     if (f(a) * f(b) > 0) {
         cout << "\nNo se puede aplicar el método de la bisección\n";
