@@ -1,7 +1,40 @@
-#include "C:\Users\Ketzel\Desktop\METODO_NUMERICO_BISECCION\include\Ventana.hpp"
-#include "C:\Users\Ketzel\Desktop\METODO_NUMERICO_BISECCION\include\Biseccion.hpp"
+#include "Ventana.hpp"
+#include "Biseccion.hpp"
+#include "Ventana.h"
 
-bool init() {
+using namespace std;
+
+Ventana::Ventana() : gWindow(nullptr), gScreenSurface(nullptr), gCurrentSurface(nullptr) {}
+
+Ventana::~Ventana() {}
+
+bool Ventana::init()
+{
+    // Implementación de la función init
+}
+
+bool Ventana::loadMedia()
+{
+    // Implementación de la función loadMedia
+}
+
+void Ventana::close()
+{
+    // Implementación de la función close
+}
+
+SDL_Surface *Ventana::loadSurface(std::string path)
+{
+    // Implementación de la función loadSurface
+}
+
+void Ventana::imprimePuntos(double a, double b)
+{
+    // Implementación de la función imprimePuntos
+}
+
+bool init()
+{
     bool success = true;
 
     // Initialize SDL
@@ -29,20 +62,24 @@ bool init() {
     return success;
 }
 
-void close() {
+void close()
+{
     SDL_DestroyWindow(Ventana::gWindow);
 
     // Quit SDL
     SDL_Quit();
 }
 
-int SDL_main(int argc, char* args[]) {
-    if (!Ventana::init()) {
+int SDL_main(int argc, char *args[])
+{
+    if (!Ventana::init())
+    {
         std::cerr << "Failed to initialize SDL." << std::endl;
         return 1;
     }
 
-    if (!Ventana::loadMedia()) {
+    if (!Ventana::loadMedia())
+    {
         std::cerr << "Failed to load media." << std::endl;
         Ventana::close();
         return 1;
@@ -54,7 +91,7 @@ int SDL_main(int argc, char* args[]) {
     double a = 0.0, b = 2.0;
     imprimePuntos(a, b);
 
-SDL_Event e;
+    SDL_Event e;
     bool quit = false;
 
     while (!quit)
