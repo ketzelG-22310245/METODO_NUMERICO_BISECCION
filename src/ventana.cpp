@@ -1,8 +1,8 @@
-#include "C:\Users\Ketzel\Desktop\METODO_NUMERICO_BISECCION\include\Ventana.hpp"
-#include "C:\Users\Ketzel\Desktop\METODO_NUMERICO_BISECCION\include\Biseccion.hpp"
+#include "Ventana.hpp"
+#include "Biseccion.hpp"
 #include <iostream>
 #include <iomanip>
-#include "C:\Users\Ketzel\Desktop\METODO_NUMERICO_BISECCION\include\Constants.hpp"
+#include "Constants.hpp"
 
 SDL_Window* Ventana::gWindow = nullptr;
 SDL_Surface* Ventana::gScreenSurface = nullptr;

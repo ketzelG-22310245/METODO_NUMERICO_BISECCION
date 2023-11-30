@@ -2,15 +2,13 @@
 #include <iomanip>
 #include <cmath>
 #include "ventana.cpp"
-#include "C:\Users\Ketzel\Desktop\METODO_NUMERICO_BISECCION\include\Ventana.hpp"
 #include "biseccion.cpp"
-#include "C:\Users\Ketzel\Desktop\METODO_NUMERICO_BISECCION\include\Biseccion.hpp"
 
 #define PRECISION 3
 
 using namespace std;
 
-int main()
+int main(double f(double x))
 {
 
     Ventana ventana;

@@ -1,11 +1,11 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
-#include "C:\Users\Ketzel\Desktop\METODO_NUMERICO_BISECCION\include\Biseccion.hpp"
+#include "Biseccion.hpp"
 
 using namespace std;
 
-double f(double x) {
+double Biseccion::f(double x) {
     return x - 4*sin(x);
 }
 
