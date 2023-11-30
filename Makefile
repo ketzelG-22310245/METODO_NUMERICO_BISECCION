@@ -4,7 +4,7 @@ LIBS = -lmingw32 -lSDL2main -lSDL2
 FLAGS = -w -Wl,-subsystem,windows
 SDL = $(INCLUDE_PATH) $(LIB_PATH) $(FLAGS) $(LIBS)
 
-bin/Metodo_biseccion: src/main.cpp src/ventana.cpp | bin
+bin/Metodo_biseccion: src/main.cpp src/ventana.cpp src/biseccion.cpp | bin
 	g++ $< -o $@ $(INCLUDE_PATH) $(LIB_PATH) $(FLAGS) $(LIBS)
 	./$@
 
