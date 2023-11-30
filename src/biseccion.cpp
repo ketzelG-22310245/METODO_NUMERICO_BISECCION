@@ -10,7 +10,7 @@ double f(double x) {
 }
 
 #define INTERVALOS 6
-void imprimePuntos(double a, double b) {
+void Biseccion::imprimePuntos(double a, double b) {
     int puntos = INTERVALOS + 1;
 
     double ancho = (b - a) / INTERVALOS;

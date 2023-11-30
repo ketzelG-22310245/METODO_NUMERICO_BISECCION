@@ -1,26 +1,47 @@
-#include "Ventana.hpp"
-#include "Biseccion.hpp"
-#include "Ventana.h"
+#include "C:\Users\Ketzel\Desktop\METODO_NUMERICO_BISECCION\include\Ventana.hpp"
+#include "C:\Users\Ketzel\Desktop\METODO_NUMERICO_BISECCION\include\Biseccion.hpp"
+#include <iostream>
+#include <iomanip>
+#include "C:\Users\Ketzel\Desktop\METODO_NUMERICO_BISECCION\include\Constants.hpp"
 
-using namespace std;
+SDL_Window* Ventana::gWindow = nullptr;
+SDL_Surface* Ventana::gScreenSurface = nullptr;
 
-Ventana::Ventana() : gWindow(nullptr), gScreenSurface(nullptr), gCurrentSurface(nullptr) {}
-
-Ventana::~Ventana() {}
+const int Ventana::SCREEN_WIDTH;
+const int Ventana::SCREEN_HEIGHT;
 
 bool Ventana::init()
 {
-    // Implementación de la función init
-}
+    // Initialize SDL
+    if (SDL_Init(SDL_INIT_VIDEO) < 0)
+    {
+        std::cerr << "SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
+        return false;
+    }
+        // Create window
+        gWindow = SDL_CreateWindow("Metodo de biseccion", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
+        if (gWindow == nullptr)
+        {
+            std::cerr << "Window could not be created! SDL_Error: " << SDL_GetError() << std::endl;
+            return false;
+        }
+            // Get window surface
+            gScreenSurface = SDL_GetWindowSurface(gWindow);
+
+            return true;
+        }
 
 bool Ventana::loadMedia()
 {
-    // Implementación de la función loadMedia
+    
 }
 
 void Ventana::close()
 {
-    // Implementación de la función close
+    SDL_DestroyWindow(Ventana::gWindow);
+
+    // Quit SDL
+    SDL_Quit();
 }
 
 SDL_Surface *Ventana::loadSurface(std::string path)
@@ -30,66 +51,27 @@ SDL_Surface *Ventana::loadSurface(std::string path)
 
 void Ventana::imprimePuntos(double a, double b)
 {
-    // Implementación de la función imprimePuntos
-}
 
-bool init()
-{
-    bool success = true;
-
-    // Initialize SDL
-    if (SDL_Init(SDL_INIT_VIDEO) < 0)
-    {
-        std::cerr << "SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
-        success = false;
-    }
-    else
-    {
-        // Create window
-        Ventana::gWindow = SDL_CreateWindow("Metodo de biseccion", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN);
-        if (gWindow == nullptr)
-        {
-            std::cerr << "Window could not be created! SDL_Error: " << SDL_GetError() << std::endl;
-            success = false;
-        }
-        else
-        {
-            // Get window surface
-            Ventana::gScreenSurface = SDL_GetWindowSurface(Ventana::gWindow);
-        }
-    }
-
-    return success;
-}
-
-void close()
-{
-    SDL_DestroyWindow(Ventana::gWindow);
-
-    // Quit SDL
-    SDL_Quit();
 }
 
 int SDL_main(int argc, char *args[])
 {
+    Ventana ventana;
+
     if (!Ventana::init())
     {
         std::cerr << "Failed to initialize SDL." << std::endl;
         return 1;
     }
 
-    if (!Ventana::loadMedia())
+    if (!ventana.loadMedia())
     {
         std::cerr << "Failed to load media." << std::endl;
-        Ventana::close();
+        ventana.close();
         return 1;
     }
 
     // Tu lógica de ventana SDL aquí...
-
-    // Ahora puedes llamar a funciones de bisección
-    double a = 0.0, b = 2.0;
-    imprimePuntos(a, b);
 
     SDL_Event e;
     bool quit = false;

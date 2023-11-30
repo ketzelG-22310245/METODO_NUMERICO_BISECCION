@@ -1,6 +1,8 @@
 #ifndef BISECCION_HPP
 #define BISECCION_HPP
 
+#pragma once
+
 class Biseccion
 {
 private:

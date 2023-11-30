@@ -2,8 +2,9 @@
 #include <iomanip>
 #include <cmath>
 #include "ventana.cpp"
-#include "Ventana.h"
+#include "C:\Users\Ketzel\Desktop\METODO_NUMERICO_BISECCION\include\Ventana.hpp"
 #include "biseccion.cpp"
+#include "C:\Users\Ketzel\Desktop\METODO_NUMERICO_BISECCION\include\Biseccion.hpp"
 
 #define PRECISION 3
 
@@ -14,23 +15,20 @@ int main()
 
     Ventana ventana;
 
-    if (!ventana.init())
+    if (!Ventana::init())
     {
         cout << "Error al inicializar la ventana." << endl;
         return 1;
     }
 
-    if (!ventana.loadMedia())
+    if (!Ventana::loadMedia())
     {
         cout << "Error al cargar los medios." << endl;
+        Ventana::close();
         return 1;
     }
 
-    // Realiza otras operaciones o bucle principal aquí
-
-    ventana.close();
-
-    if (!loadMedia())
+    if (!ventana.loadMedia())
     {
         cout << setprecision(PRECISION); // Establecemos la precisión
 
@@ -44,7 +42,7 @@ int main()
         cout << "b = ";
         cin >> b;
 
-        imprimePuntos(a, b);
+        Ventana::imprimePuntos(a, b);
 
         cout << "\nEscoja el intervalo adecuado" << endl;
         cout << "\na = ";
@@ -114,7 +112,8 @@ int main()
 
         cin.get();
         cin.get();
-
+        
+        Ventana::close();
         return 0;
     }
 }
