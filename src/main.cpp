@@ -1,8 +1,8 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
-#include "ventana.cpp"
-#include "biseccion.cpp"
+#include <ventana.cpp>
+#include <biseccion.cpp>
 
 #define PRECISION 3
 

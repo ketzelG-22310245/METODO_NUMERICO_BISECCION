@@ -1,7 +1,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
-#include "Biseccion.hpp"
+#include <Biseccion.hpp>
 
 using namespace std;
 

@@ -1,8 +1,8 @@
-#include "Ventana.hpp"
-#include "Biseccion.hpp"
+#include <Ventana.hpp>
+#include <Biseccion.hpp>
 #include <iostream>
 #include <iomanip>
-#include "Constants.hpp"
+#include <Constants.hpp>
 
 SDL_Window* Ventana::gWindow = nullptr;
 SDL_Surface* Ventana::gScreenSurface = nullptr;
