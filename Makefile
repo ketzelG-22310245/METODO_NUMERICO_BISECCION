@@ -10,4 +10,4 @@ $(EXE): $(SRCS) include/*.hpp
 	g++ $(SRCS) -o $@ $(INCLUDE_PATH) $(FLAGS) $(LIBS)
 
 run : $(EXE)
-	./$<
+	./$(EXE)

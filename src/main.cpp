@@ -25,23 +25,24 @@ using namespace std;
         return 1;
     }
 
-    
+
 
         cin.get();
         cin.get();
-        
+
         Ventana::close();
         return 0;
     }
 }
 */
 
+double f(double x)
+{
+}
 
 int main(int argc, char **argv)
 {
     Ventana ventana;
-
-    double f(double x);
 
     if (!Ventana::init())
     {
@@ -138,26 +139,25 @@ int main(int argc, char **argv)
             } while (true);
         }
 
-    SDL_Event e;
-    bool quit = false;
+        SDL_Event e;
+        bool quit = false;
 
-    while (!quit)
-    {
-        // Manejar eventos
-        while (SDL_PollEvent(&e) != 0)
+        while (!quit)
         {
-            if (e.type == SDL_QUIT)
+            // Manejar eventos
+            while (SDL_PollEvent(&e) != 0)
             {
-                quit = true;
+                if (e.type == SDL_QUIT)
+                {
+                    quit = true;
+                }
             }
         }
+
+        cin.get();
+        cin.get();
+
+        Ventana::close();
+        return 0;
     }
-
-    cin.get();
-    cin.get();
-
-    Ventana::close();
-    return 0;
 }
-}
-
