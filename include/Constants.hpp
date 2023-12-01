@@ -1,5 +1,4 @@
-#ifndef CONSTANTS_HPP
-#define CONSTANTS_HPP
+#pragma once
 
 class Constants
 {
@@ -11,5 +10,3 @@ public:
     const int SCREEN_HEIGHT = 600;
     ~Constants() {}
 };
-
-#endif

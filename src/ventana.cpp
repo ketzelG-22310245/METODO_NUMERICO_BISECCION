@@ -1,7 +1,7 @@
-#include <Ventana.hpp>
-#include <Biseccion.hpp>
 #include <iostream>
 #include <iomanip>
+#include <Ventana.hpp>
+#include <Biseccion.hpp>
 #include <Constants.hpp>
 
 SDL_Window* Ventana::gWindow = nullptr;
@@ -9,6 +9,14 @@ SDL_Surface* Ventana::gScreenSurface = nullptr;
 
 const int Ventana::SCREEN_WIDTH;
 const int Ventana::SCREEN_HEIGHT;
+
+Ventana::Ventana(){
+
+}
+
+Ventana::~Ventana(){
+    
+}
 
 bool Ventana::init()
 {
@@ -52,42 +60,4 @@ SDL_Surface *Ventana::loadSurface(std::string path)
 void Ventana::imprimePuntos(double a, double b)
 {
 
-}
-
-int SDL_main(int argc, char *args[])
-{
-    Ventana ventana;
-
-    if (!Ventana::init())
-    {
-        std::cerr << "Failed to initialize SDL." << std::endl;
-        return 1;
-    }
-
-    if (!ventana.loadMedia())
-    {
-        std::cerr << "Failed to load media." << std::endl;
-        ventana.close();
-        return 1;
-    }
-
-    // Tu lógica de ventana SDL aquí...
-
-    SDL_Event e;
-    bool quit = false;
-
-    while (!quit)
-    {
-        // Manejar eventos
-        while (SDL_PollEvent(&e) != 0)
-        {
-            if (e.type == SDL_QUIT)
-            {
-                quit = true;
-            }
-        }
-    }
-
-    Ventana::close();
-    return 0;
 }

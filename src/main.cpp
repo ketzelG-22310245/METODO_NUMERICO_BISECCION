@@ -1,14 +1,13 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
-#include <ventana.cpp>
-#include <biseccion.cpp>
+#include <Ventana.hpp>
 
 #define PRECISION 3
 
 using namespace std;
 
-int main(double f(double x))
+int otraCosa(double f(double x))
 {
 
     Ventana ventana;
@@ -114,4 +113,44 @@ int main(double f(double x))
         Ventana::close();
         return 0;
     }
+}
+
+
+
+int main(int argc, char **argv)
+{
+    Ventana ventana;
+
+    if (!Ventana::init())
+    {
+        std::cerr << "Failed to initialize SDL." << std::endl;
+        return 1;
+    }
+
+    if (!ventana.loadMedia())
+    {
+        std::cerr << "Failed to load media." << std::endl;
+        ventana.close();
+        return 1;
+    }
+
+    // Tu lógica de ventana SDL aquí...
+
+    SDL_Event e;
+    bool quit = false;
+
+    while (!quit)
+    {
+        // Manejar eventos
+        while (SDL_PollEvent(&e) != 0)
+        {
+            if (e.type == SDL_QUIT)
+            {
+                quit = true;
+            }
+        }
+    }
+
+    Ventana::close();
+    return 0;
 }

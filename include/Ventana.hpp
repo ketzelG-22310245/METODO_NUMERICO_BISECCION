@@ -1,11 +1,8 @@
-#ifndef VENTANA_HPP
-#define VENTANA_HPP
-
 #pragma once
 
 #include <string>
 #include <iostream>
-#include "SDL2/SDL.h"
+#include <SDL2/SDL.h>
 
 #define KEY_PRESS_SURFACE_TOTAL 3
 
@@ -29,5 +26,3 @@ public:
     static const int SCREEN_WIDTH = 800;
     static const int SCREEN_HEIGHT = 600;
 };
-
-#endif

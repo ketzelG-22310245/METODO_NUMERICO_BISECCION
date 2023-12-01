@@ -1,7 +1,7 @@
+#include <Biseccion.hpp>
 #include <iostream>
 #include <iomanip>
 #include <cmath>
-#include <Biseccion.hpp>
 
 using namespace std;
 
@@ -10,6 +10,8 @@ double Biseccion::f(double x) {
 }
 
 #define INTERVALOS 6
+
+
 void Biseccion::imprimePuntos(double a, double b) {
     int puntos = INTERVALOS + 1;
 

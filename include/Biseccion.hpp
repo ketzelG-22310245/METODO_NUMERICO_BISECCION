@@ -1,6 +1,3 @@
-#ifndef BISECCION_HPP
-#define BISECCION_HPP
-
 #pragma once
 
 class Biseccion
@@ -13,5 +10,3 @@ public:
     void imprimePuntos(double a, double b);
     ~Biseccion() {}
 };
-
-#endif
