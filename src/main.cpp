@@ -7,35 +7,6 @@
 
 using namespace std;
 
-/*int otraCosa(double f(double x))
-{
-
-    Ventana ventana;
-
-    if (!Ventana::init())
-    {
-        cout << "Error al inicializar la ventana." << endl;
-        return 1;
-    }
-
-    if (!Ventana::loadMedia())
-    {
-        cout << "Error al cargar los medios." << endl;
-        Ventana::close();
-        return 1;
-    }
-
-
-
-        cin.get();
-        cin.get();
-
-        Ventana::close();
-        return 0;
-    }
-}
-*/
-
 double f(double x)
 {
 }
@@ -44,7 +15,7 @@ int main(int argc, char **argv)
 {
     Ventana ventana;
 
-    if (!Ventana::init())
+    if (!ventana.init())
     {
         std::cerr << "Failed to initialize SDL." << std::endl;
         return 1;
