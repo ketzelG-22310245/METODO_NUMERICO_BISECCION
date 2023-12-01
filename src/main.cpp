@@ -41,7 +41,7 @@ int main(int argc, char **argv)
 {
     Ventana ventana;
 
-    double f(double x)
+    double f(double x);
 
     if (!Ventana::init())
     {
