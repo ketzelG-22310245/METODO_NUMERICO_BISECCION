@@ -7,7 +7,7 @@
 
 using namespace std;
 
-int otraCosa(double f(double x))
+/*int otraCosa(double f(double x))
 {
 
     Ventana ventana;
@@ -22,6 +22,37 @@ int otraCosa(double f(double x))
     {
         cout << "Error al cargar los medios." << endl;
         Ventana::close();
+        return 1;
+    }
+
+    
+
+        cin.get();
+        cin.get();
+        
+        Ventana::close();
+        return 0;
+    }
+}
+*/
+
+
+int main(int argc, char **argv)
+{
+    Ventana ventana;
+
+    double f(double x)
+
+    if (!Ventana::init())
+    {
+        std::cerr << "Failed to initialize SDL." << std::endl;
+        return 1;
+    }
+
+    if (!ventana.loadMedia())
+    {
+        std::cerr << "Failed to load media." << std::endl;
+        ventana.close();
         return 1;
     }
 
@@ -107,35 +138,6 @@ int otraCosa(double f(double x))
             } while (true);
         }
 
-        cin.get();
-        cin.get();
-        
-        Ventana::close();
-        return 0;
-    }
-}
-
-
-
-int main(int argc, char **argv)
-{
-    Ventana ventana;
-
-    if (!Ventana::init())
-    {
-        std::cerr << "Failed to initialize SDL." << std::endl;
-        return 1;
-    }
-
-    if (!ventana.loadMedia())
-    {
-        std::cerr << "Failed to load media." << std::endl;
-        ventana.close();
-        return 1;
-    }
-
-    // Tu lógica de ventana SDL aquí...
-
     SDL_Event e;
     bool quit = false;
 
@@ -151,6 +153,11 @@ int main(int argc, char **argv)
         }
     }
 
+    cin.get();
+    cin.get();
+
     Ventana::close();
     return 0;
 }
+}
+
