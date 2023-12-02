@@ -15,14 +15,32 @@ private:
     SDL_Surface *gCurrentSurface;
 
 public:
-    Ventana();
-    ~Ventana();
+    Ventana(){
 
-    static bool init();
-    static void close();
+    }
+
+    ~Ventana(){
+
+    }
+
+    static bool init(){
+
+    }
+    
+    static void close(){
+
+    }
+    
+
     static SDL_Surface *loadSurface(std::string path);
-    static void imprimePuntos(double a, double b);
-    static bool loadMedia();
+    static void imprimePuntos(double a, double b){
+
+    }
+    
+    static bool loadMedia(){
+
+    }
+    
     static const int SCREEN_WIDTH = 800;
     static const int SCREEN_HEIGHT = 600;
 };
