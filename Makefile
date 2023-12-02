@@ -1,6 +1,6 @@
 INCLUDE_PATH = -Iinclude
 LIBS = -lmingw32 -lSDL2main -lSDL2
-FLAGS = -w -Wl,-subsystem,windows 
+FLAGS = -w -Wl,-subsystem,windows
 
 SRCS = src/main.cpp 
 EXE = bin/Metodo_biseccion
