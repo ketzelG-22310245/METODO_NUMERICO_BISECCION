@@ -24,4 +24,4 @@ void Biseccion::imprimePuntos(double a, double b) {
         cout << "\t" << a << "\t" << f(a) << endl;
         a = a + ancho;
     }
-}
+}*/

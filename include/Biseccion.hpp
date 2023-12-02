@@ -6,6 +6,11 @@
 
 using namespace std;
 
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+
+using namespace std;
 class Biseccion
 {
 private:

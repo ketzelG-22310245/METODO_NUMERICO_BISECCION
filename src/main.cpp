@@ -1,7 +1,9 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+
 #include <Ventana.hpp>
+
 
 #define PRECISION 3
 
@@ -114,21 +116,22 @@ int main(int argc, char **argv)
         bool quit = false;
 
         while (!quit)
+    {
+        // Manejar eventos
+        SDL_Event e;
+        while (SDL_PollEvent(&e) != 0)
         {
-            // Manejar eventos
-            while (SDL_PollEvent(&e) != 0)
+            if (e.type == SDL_QUIT)
             {
-                if (e.type == SDL_QUIT)
-                {
-                    quit = true;
-                }
+                quit = true;
             }
         }
 
         cin.get();
         cin.get();
 
-        Ventana::close();
+        ventana.close();
         return 0;
     }
+}
 }
