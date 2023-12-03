@@ -30,7 +30,7 @@ void NumericalMethod::run()
     {
         processEvents();
 
-        // Resto del código...
+        
 
         renderBisectionResults(bisectionMethod);
 
