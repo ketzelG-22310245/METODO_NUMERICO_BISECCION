@@ -9,6 +9,12 @@ NumericalMethod::NumericalMethod()
     createWindow();
     createRenderer();
     isRunning = true;
+
+    // Crear un objeto BisectionMethod
+    BisectionMethod bisectionMethod;
+
+    // Llamar a renderBisectionResults con el objeto creado
+    renderBisectionResults(bisectionMethod);
 }
 
 NumericalMethod::~NumericalMethod()
@@ -26,10 +32,27 @@ void NumericalMethod::run()
 
         // Resto del código...
 
-        render();
+        renderBisectionResults(bisectionMethod);
+        SDL_Delay(16); // Ajusta según la frecuencia de actualización deseada
     }
 
     SDL_Delay(5000); // Espera 5 segundos antes de cerrar la ventana
+}
+
+void NumericalMethod::renderBisectionResults(const BisectionMethod& bisectionMethod)
+{
+    // Limpiar el renderer
+    SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
+    SDL_RenderClear(renderer);
+
+    // Dibujar puntos o líneas según los resultados del Método de Bisección
+    SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
+    
+    // Ejemplo de dibujo de una línea (ajusta según tu lógica)
+    SDL_RenderDrawLine(renderer, 0, 0, 800, 600);
+
+    // Presentar el renderer
+    SDL_RenderPresent(renderer);
 }
 
 double NumericalMethod::calculateFunction(double x)

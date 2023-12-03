@@ -5,6 +5,8 @@
 #include <iomanip>
 #include <cmath>
 
+#include "BisectionMethod.hpp"
+
 class NumericalMethod {
 public:
     NumericalMethod();
@@ -23,5 +25,6 @@ private:
     void createRenderer();
     void processEvents();
     void render();
+    void renderBisectionResults(const BisectionMethod& bisectionMethod);
     void cleanup();
 };
