@@ -9,6 +9,7 @@ NumericalMethod::NumericalMethod()
     createWindow();
     createRenderer();
     isRunning = true;
+    windowWidth = 800;  // O el valor que corresponda
 
     // Crear un objeto BisectionMethod
     BisectionMethod bisectionMethod;
@@ -37,11 +38,11 @@ void NumericalMethod::run()
         SDL_Delay(16); // Ajusta según la frecuencia de actualización deseada
     }
 
-    SDL_RenderPresent(renderer);  // Asegúrate de presentar el renderer antes de salir
-    SDL_Delay(5000); // Espera 5 segundos antes de cerrar la ventana
+    SDL_RenderPresent(renderer); // Asegúrate de presentar el renderer antes de salir
+    SDL_Delay(5000);             // Espera 5 segundos antes de cerrar la ventana
 }
 
-void NumericalMethod::renderBisectionResults(const BisectionMethod& bisectionMethod)
+void NumericalMethod::renderBisectionResults(const BisectionMethod &bisectionMethod)
 {
     // Limpiar el renderer
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
@@ -49,12 +50,40 @@ void NumericalMethod::renderBisectionResults(const BisectionMethod& bisectionMet
 
     // Dibujar puntos o líneas según los resultados del Método de Bisección
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
-    
+
     // Ejemplo de dibujo de puntos basados en resultados de bisección
-    for (int i = 0; i < 800; i += 10) {
+    for (int i = 0; i < 800; i += 10)
+    {
         double x = i;
-        double y = calculateFunction(x);
-        SDL_RenderDrawPoint(renderer, static_cast<int>(x), static_cast<int>(y));
+        // Asegúrate de que x esté dentro de los límites deseados
+        if (x >= 0 && x <= windowWidth)
+        {
+            double y = calculateFunction(x);
+            SDL_RenderDrawPoint(renderer, static_cast<int>(x), static_cast<int>(y));
+        }
+    }
+
+    for (int i = 0; i < 800; i += 10)
+    {
+        double x = i;
+        if (x >= 0 && x <= windowWidth)
+        {
+            double y = calculateFunction(x);
+            // Ajusta la escala de y según sea necesario
+            y = y * scaleFactor;
+            SDL_RenderDrawPoint(renderer, static_cast<int>(x), static_cast<int>(y));
+        }
+    }
+
+    for (int i = 0; i < 800; i += 10)
+    {
+        double x = i;
+        if (x >= 0 && x <= windowWidth)
+        {
+            double y = calculateFunction(x);
+            std::cout << "x: " << x << ", y: " << y << std::endl;
+            SDL_RenderDrawPoint(renderer, static_cast<int>(x), static_cast<int>(y));
+        }
     }
 
     // Presentar el renderer

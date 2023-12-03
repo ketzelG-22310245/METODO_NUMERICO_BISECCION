@@ -57,7 +57,7 @@ void BisectionMethod::calculateRoots(double a, double b, double tolerancia) {
 }
 
 void BisectionMethod::getInput() {
-    std::cout << "\nCalculo de las raíces de una función aplicando el método de la bisección" << std::endl;
+    std::cout << "\nCalculo de las raices de una funcion aplicando el metodo de la biseccion" << std::endl;
     std::cout << "\nIngrese el intervalo inicial [a, b]" << std::endl;
     std::cout << "\na = ";
     std::cin >> a;

@@ -13,9 +13,12 @@ public:
     ~NumericalMethod();
 
     void run();
+    void renderBisectionResults(const BisectionMethod& bisectionMethod);
     double calculateFunction(double x);
 
 private:
+    double windowWidth;  // Asegúrate de declarar windowWidth como una variable miembro
+    double scaleFactor;  // Agrega scaleFactor como una variable miembro privada
     SDL_Window* window;
     SDL_Renderer* renderer;
     bool isRunning;
@@ -25,6 +28,6 @@ private:
     void createRenderer();
     void processEvents();
     void render();
-    void renderBisectionResults(const BisectionMethod& bisectionMethod);
+    
     void cleanup();
 };
