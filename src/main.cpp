@@ -5,8 +5,10 @@
 #include <BisectionMethod.hpp>
 
 int main(int argc, char **argv) {
+    BisectionMethod bisectionMethod;
     NumericalMethod numericalMethod;
-    numericalMethod.run();
+
+    numericalMethod.run(bisectionMethod);
 
     return 0;
 }

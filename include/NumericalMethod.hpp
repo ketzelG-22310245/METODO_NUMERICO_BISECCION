@@ -5,7 +5,7 @@
 #include <iomanip>
 #include <cmath>
 
-#include "BisectionMethod.hpp"
+#include <BisectionMethod.hpp>
 
 class NumericalMethod {
 public:
@@ -27,7 +27,6 @@ private:
     void createWindow();
     void createRenderer();
     void processEvents();
-    void render();
-    
+
     void cleanup();
 };
