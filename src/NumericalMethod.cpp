@@ -33,9 +33,11 @@ void NumericalMethod::run()
         // Resto del código...
 
         renderBisectionResults(bisectionMethod);
+
         SDL_Delay(16); // Ajusta según la frecuencia de actualización deseada
     }
 
+    SDL_RenderPresent(renderer);  // Asegúrate de presentar el renderer antes de salir
     SDL_Delay(5000); // Espera 5 segundos antes de cerrar la ventana
 }
 
@@ -48,8 +50,12 @@ void NumericalMethod::renderBisectionResults(const BisectionMethod& bisectionMet
     // Dibujar puntos o líneas según los resultados del Método de Bisección
     SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);
     
-    // Ejemplo de dibujo de una línea (ajusta según tu lógica)
-    SDL_RenderDrawLine(renderer, 0, 0, 800, 600);
+    // Ejemplo de dibujo de puntos basados en resultados de bisección
+    for (int i = 0; i < 800; i += 10) {
+        double x = i;
+        double y = calculateFunction(x);
+        SDL_RenderDrawPoint(renderer, static_cast<int>(x), static_cast<int>(y));
+    }
 
     // Presentar el renderer
     SDL_RenderPresent(renderer);
