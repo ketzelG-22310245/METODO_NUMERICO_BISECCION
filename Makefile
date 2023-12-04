@@ -4,8 +4,21 @@ INCLUDE_PATH = -Iinclude
 SRCS = src/main.cpp src/BisectionMethod.cpp src/NumericalMethod.cpp
 EXE = bin/METODO_NUMERICO_BISECCION
 
+<<<<<<< HEAD
 bin/METODO_NUMERICO_BISECCION: $(SRCS) include/*.hpp
 	g++ $^ -o $@  $(INCLUDE_PATH) $(LIBS)
 
 run: bin/METODO_NUMERICO_BISECCION
 	./bin/METODO_NUMERICO_BISECCION
+=======
+# Crear el directorio bin si no existe
+$(shell mkdir -p bin)
+
+# Regla para construir el ejecutable
+$(EXE): $(SRCS)
+	g++ $(SRCS) -o $@ $(INCLUDE_PATH) $(LIBS)
+
+# Regla para ejecutar el programa
+run: $(EXE)
+	./$(EXE)
+>>>>>>> 938b4e6 (ventana abre)
