@@ -3,6 +3,7 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
+#include <SDL2/SDL.h>
 
 class BisectionMethod {
 public:
@@ -14,6 +15,7 @@ public:
 
 private:
     double a, b, tolerance;
+    double xr, xr_antiguo;
 
     void getInput();
     void printPoints();
