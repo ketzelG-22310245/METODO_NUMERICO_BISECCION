@@ -9,15 +9,13 @@ public:
     BisectionMethod();
     ~BisectionMethod();
 
-    void calculateRoots(double a, double b, double tolerancia);
+    void calculateRoots();
+    static const int INTERVALOS = 6;
+
+private:
+    double a, b, tolerance;
+
     void getInput();
     void printPoints();
     double function(double x);
-    
-    static const int INTERVALOS = 6;
-    double a, b, tolerance;
-
-private:
-    
-
 };
