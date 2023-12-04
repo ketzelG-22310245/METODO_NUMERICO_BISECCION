@@ -5,29 +5,24 @@
 #include <iomanip>
 #include <cmath>
 
+#include <BisectionMethod.hpp>
+
 class NumericalMethod {
 public:
-    NumericalMethod();  // Constructor sin argumentos
-    NumericalMethod(BisectionMethod& bisectionMethod);  // Constructor con BisectionMethod
+    NumericalMethod();
+    NumericalMethod(BisectionMethod& bisectionMethod); // Constructor que acepta BisectionMethod
     ~NumericalMethod();
 
-<<<<<<< HEAD
     void run();
-    double calculateFunction(double x);
-
-private:
-=======
-    void run();   
     void renderBisectionResults(const BisectionMethod& bisectionMethod);
     double calculateFunction(double x);
 
 private:
-    //BisectionMethod& bisectionMethod;  // Referencia al objeto BisectionMethod
+
     BisectionMethod& bisectionMethod;  // Utilizamos una referencia en lugar de un puntero
 
     double windowWidth;  // Asegúrate de declarar windowWidth como una variable miembro
     double scaleFactor;  // Agrega scaleFactor como una variable miembro privada
->>>>>>> 938b4e6 (ventana abre)
     SDL_Window* window;
     SDL_Renderer* renderer;
     bool isRunning;
@@ -36,6 +31,6 @@ private:
     void createWindow();
     void createRenderer();
     void processEvents();
-    void render();
+
     void cleanup();
 };

@@ -3,12 +3,8 @@
 #include <SDL2/SDL_main.h>
 #include <SDL2/SDL.h>
 
-<<<<<<< HEAD
 NumericalMethod::NumericalMethod()
-=======
-
-NumericalMethod::NumericalMethod()
-    : bisectionMethod(bisectionMethod)  
+    : bisectionMethod(bisectionMethod)
 {
     initializeSDL();
     createWindow();
@@ -16,8 +12,8 @@ NumericalMethod::NumericalMethod()
     isRunning = true;
 }
 
-NumericalMethod::NumericalMethod(BisectionMethod& bisectionMethod)
-    : bisectionMethod(bisectionMethod)  // Inicializa la referencia en el constructor
+NumericalMethod::NumericalMethod(BisectionMethod &bisectionMethod)
+    : bisectionMethod(bisectionMethod) // Inicializa la referencia en el constructor
 {
     initializeSDL();
     createWindow();
@@ -25,11 +21,12 @@ NumericalMethod::NumericalMethod(BisectionMethod& bisectionMethod)
     isRunning = true;
 }
 
-NumericalMethod::~NumericalMethod(){
+NumericalMethod::~NumericalMethod()
+{
     cleanup();
 }
 
-void NumericalMethod::renderBisectionResults(const BisectionMethod& bisectionMethod)
+void NumericalMethod::renderBisectionResults(const BisectionMethod &bisectionMethod)
 {
     // Limpiar el renderer
     SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);
@@ -50,10 +47,13 @@ void NumericalMethod::renderBisectionResults(const BisectionMethod& bisectionMet
     SDL_RenderPresent(renderer);
 }
 
-void NumericalMethod::processEvents() {
+void NumericalMethod::processEvents()
+{
     SDL_Event event;
-    while (SDL_PollEvent(&event)) {
-        if (event.type == SDL_QUIT) {
+    while (SDL_PollEvent(&event))
+    {
+        if (event.type == SDL_QUIT)
+        {
             isRunning = false;
         }
     }
@@ -75,79 +75,6 @@ void NumericalMethod::run()
 double NumericalMethod::calculateFunction(double x)
 {
     return x - 4 * sin(x);
-    
-}
-
-void NumericalMethod::initializeSDL()
-{
-    if (SDL_Init(SDL_INIT_VIDEO) < 0)
-    {
-        std::cout << "Error al inicializar SDL: " << SDL_GetError() << std::endl;
-        exit(1);
-    }
-}
-
-void NumericalMethod::createWindow() {
-    // Crear la ventana
-    window = SDL_CreateWindow("Ventana para Método Numérico", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_SHOWN);
-    if (window == nullptr) {
-        std::cout << "Error al crear la ventana: " << SDL_GetError() << std::endl;
-        SDL_Quit();
-        exit(1);
-    }
-}
-
-void NumericalMethod::createRenderer() {
-    // Crear el renderer
-    renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-    if (renderer == nullptr) {
-        std::cout << "Error al crear el renderer: " << SDL_GetError() << std::endl;
-        SDL_DestroyWindow(window);
-        SDL_Quit();
-        exit(1);
-    }
-}
-
-void NumericalMethod::cleanup() {
-    // Limpiar recursos
-    SDL_DestroyRenderer(renderer);
-    SDL_DestroyWindow(window);
-    SDL_Quit();
-}
-
-/*NumericalMethod::NumericalMethod()
->>>>>>> 938b4e6 (ventana abre)
-{
-    initializeSDL();
-    createWindow();
-    createRenderer();
-    isRunning = true;
-}
-
-NumericalMethod::~NumericalMethod()
-{
-    cleanup();
-}
-
-void NumericalMethod::run()
-{
-    BisectionMethod bisectionMethod;
-
-    while (isRunning)
-    {
-        processEvents();
-
-        // Resto del código...
-
-        render();
-    }
-
-    SDL_Delay(5000); // Espera 5 segundos antes de cerrar la ventana
-}
-
-double NumericalMethod::calculateFunction(double x)
-{
-    return x - 4 * sin(x);
 }
 
 void NumericalMethod::initializeSDL()
@@ -161,6 +88,7 @@ void NumericalMethod::initializeSDL()
 
 void NumericalMethod::createWindow()
 {
+    // Crear la ventana
     window = SDL_CreateWindow("Ventana para Método Numérico", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 800, 600, SDL_WINDOW_SHOWN);
     if (window == nullptr)
     {
@@ -172,6 +100,7 @@ void NumericalMethod::createWindow()
 
 void NumericalMethod::createRenderer()
 {
+    // Crear el renderer
     renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
     if (renderer == nullptr)
     {
@@ -182,25 +111,9 @@ void NumericalMethod::createRenderer()
     }
 }
 
-void NumericalMethod::processEvents()
-{
-    SDL_Event event;
-    while (SDL_PollEvent(&event))
-    {
-        if (event.type == SDL_QUIT)
-        {
-            isRunning = false;
-        }
-    }
-}
-
-void NumericalMethod::render()
-{
-    SDL_RenderPresent(renderer); // Asegúrate de tener un renderer definido
-}
-
 void NumericalMethod::cleanup()
 {
+    // Limpiar recursos
     SDL_DestroyRenderer(renderer);
     SDL_DestroyWindow(window);
     SDL_Quit();
