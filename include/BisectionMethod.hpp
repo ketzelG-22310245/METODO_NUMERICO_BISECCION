@@ -4,7 +4,8 @@
 #include <iomanip>
 #include <cmath>
 
-class BisectionMethod {
+class BisectionMethod
+{
 public:
     BisectionMethod();
     ~BisectionMethod();

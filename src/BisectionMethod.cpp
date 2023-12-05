@@ -4,27 +4,35 @@
 #include <cstdlib>
 #include <cmath>
 
-BisectionMethod::BisectionMethod() {
+BisectionMethod::BisectionMethod()
+{
     getInput();
 }
 
-BisectionMethod::~BisectionMethod() {
+BisectionMethod::~BisectionMethod()
+{
     // Destructor
 }
 
-void BisectionMethod::calculateRoots() {
+void BisectionMethod::calculateRoots()
+{
     const int MAX_ITERATIONS = 500;
 
-    if (function(a) * function(b) > 0) {
+    if (function(a) * function(b) > 0)
+    {
         std::cout << "\nNo se puede aplicar el método de la bisección\n";
         std::cout << "porque f(" << a << ") y f(" << b << ") tienen el mismo signo" << std::endl;
-    } else {
+    }
+    else
+    {
         std::cout << "Tolerancia = " << tolerance << std::endl;
-        std::cout << "\na\t\t\tb\t\t\tc\t\t\tf(c)\t\t\tEr\n" << std::fixed << std::setprecision(2) << std::endl;
+        std::cout << "\na\t\t\tb\t\t\tc\t\t\tf(c)\t\t\tEr\n"
+                  << std::fixed << std::setprecision(2) << std::endl;
 
         int iterationCount = 0; // Contador para realizar un seguimiento de las iteraciones
 
-        do {
+        do
+        {
             xr = (a + b) / 2.0;
             std::cout << a << "\t\t\t" << b << "\t\t\t" << xr << "\t\t\t";
             std::cout << function(xr) << "\t\t\t";
@@ -32,17 +40,26 @@ void BisectionMethod::calculateRoots() {
             double error_rel = (std::abs(xr - xr_antiguo) / std::abs(xr)) * 100.0;
             std::cout << std::fixed << std::setprecision(2) << error_rel << "%" << std::endl;
 
-            if (std::abs(function(xr)) <= tolerance || iterationCount >= MAX_ITERATIONS) {
-                if (std::abs(function(xr)) <= tolerance) {
+            if (std::abs(function(xr)) <= tolerance || iterationCount >= MAX_ITERATIONS)
+            {
+                if (std::abs(function(xr)) <= tolerance)
+                {
                     std::cout << "\n\nPara una tolerancia " << tolerance << " la raíz de f es " << xr << std::endl;
-                } else {
+                }
+                else
+                {
                     std::cout << "\n\nSe alcanzó el número máximo de iteraciones (" << MAX_ITERATIONS << ")." << std::endl;
                 }
                 break;
-            } else {
-                if (function(xr) * function(a) > 0) {
+            }
+            else
+            {
+                if (function(xr) * function(a) > 0)
+                {
                     a = xr;
-                } else if (function(xr) * function(b) > 0) {
+                }
+                else if (function(xr) * function(b) > 0)
+                {
                     b = xr;
                 }
             }
@@ -57,7 +74,8 @@ void BisectionMethod::calculateRoots() {
     std::cin.get();
 }
 
-void BisectionMethod::getInput() {
+void BisectionMethod::getInput()
+{
     std::cout << "\nCalculo de las raíces de una función aplicando el método de la bisección" << std::endl;
     std::cout << "\nIngrese el intervalo inicial [a, b]" << std::endl;
     std::cout << "\na = ";
@@ -75,19 +93,24 @@ void BisectionMethod::getInput() {
     std::cout << "b = ";
     std::cin >> b;
 
-    //tolerance = 1e-5; // Ajusta la tolerancia según tus necesidades
+    // tolerance = 1e-5; // Ajusta la tolerancia según tus necesidades
     const int MAX_ITERATIONS = 500; // Ajusta el límite máximo de iteraciones según tus necesidades
 
-    if (function(a) * function(b) > 0) {
+    if (function(a) * function(b) > 0)
+    {
         std::cout << "\nNo se puede aplicar el método de la bisección\n";
         std::cout << "porque f(" << a << ") y f(" << b << ") tienen el mismo signo" << std::endl;
-    } else {
+    }
+    else
+    {
         std::cout << "Tolerancia = " << tolerance << std::endl;
-        std::cout << "\na\t\t\tb\t\t\tc\t\t\tf(c)\t\t\tEr\n"<< std::fixed << std::setprecision(2) << std::endl;
+        std::cout << "\na\t\t\tb\t\t\tc\t\t\tf(c)\t\t\tEr\n"
+                  << std::fixed << std::setprecision(2) << std::endl;
 
         int iterationCount = 0; // Contador para realizar un seguimiento de las iteraciones
 
-        do {
+        do
+        {
             xr = (a + b) / 2.0;
             std::cout << a << "\t\t\t" << b << "\t\t\t" << xr << "\t\t\t";
             std::cout << function(xr) << "\t\t\t";
@@ -95,17 +118,26 @@ void BisectionMethod::getInput() {
             double error_rel = (std::abs(xr - xr_antiguo) / std::abs(xr)) * 100.0;
             std::cout << std::fixed << std::setprecision(2) << error_rel << "%" << std::endl;
 
-            if (std::abs(function(xr)) <= tolerance || iterationCount >= MAX_ITERATIONS) {
-                if (std::abs(function(xr)) <= tolerance) {
+            if (std::abs(function(xr)) <= tolerance || iterationCount >= MAX_ITERATIONS)
+            {
+                if (std::abs(function(xr)) <= tolerance)
+                {
                     std::cout << "\n\nPara una tolerancia " << tolerance << " la raíz de f es " << xr << std::endl;
-                } else {
+                }
+                else
+                {
                     std::cout << "\n\nSe alcanzó el número máximo de iteraciones (" << MAX_ITERATIONS << ")." << std::endl;
                 }
                 break;
-            } else {
-                if (function(xr) * function(a) > 0) {
+            }
+            else
+            {
+                if (function(xr) * function(a) > 0)
+                {
                     a = xr;
-                } else if (function(xr) * function(b) > 0) {
+                }
+                else if (function(xr) * function(b) > 0)
+                {
                     b = xr;
                 }
             }
@@ -120,19 +152,22 @@ void BisectionMethod::getInput() {
     std::cin.get();
 }
 
-void BisectionMethod::printPoints() {
+void BisectionMethod::printPoints()
+{
     int points = INTERVALOS + 1;
     double width = (b - a) / INTERVALOS;
 
     std::cout << "\n";
     std::cout << "\tx\tf(x)\n"
               << std::endl;
-    for (int i = 0; i < points; i++) {
+    for (int i = 0; i < points; i++)
+    {
         std::cout << "\t" << a << "\t" << function(a) << std::endl;
         a = a + width;
     }
 }
 
-double BisectionMethod::function(double x) {
+double BisectionMethod::function(double x)
+{
     return x - 4 * sin(x);
 }
