@@ -14,7 +14,7 @@ bool SDLHandler::init() {
         return false;
     }
 
-    gWindow = SDL_CreateWindow("SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, SDL_WINDOW_SHOWN);
+    gWindow = SDL_CreateWindow("Presentacion proyecto", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 439, 426, SDL_WINDOW_SHOWN);
     if (gWindow == nullptr) {
         std::cerr << "Error al crear la ventana: " << SDL_GetError() << std::endl;
         SDL_Quit();
