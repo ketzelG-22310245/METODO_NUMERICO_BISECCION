@@ -1,8 +1,8 @@
 #include <BisectionMethod.hpp>
 #include <Function.hpp>
 #include <iostream>
+#include <cstdlib>
 #include <cmath>
-#include <SDL2/SDL.h>
 
 BisectionMethod::BisectionMethod() {
     getInput();

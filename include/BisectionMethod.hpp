@@ -3,7 +3,6 @@
 #include <iostream>
 #include <iomanip>
 #include <cmath>
-#include <SDL2/SDL.h>
 
 class BisectionMethod {
 public:

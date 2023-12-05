@@ -1,14 +1,26 @@
 #include <iostream>
-#include <NumericalMethod.hpp>
+#include <cstdlib>
 #include <BisectionMethod.hpp>
+#include <SDLHandler.hpp>
+#include <SDL2/SDL.h>
+#include <stdio.h>
 
-int main(int argc, char **argv) {
-
-    
+int main(int argc, char** argv) {
+    SDLHandler sdlHandler;
     BisectionMethod bisectionMethod;
-    NumericalMethod numericalMethod(bisectionMethod); // Pasa el objeto BisectionMethod al constructor
 
-    numericalMethod.run();
+    if (!sdlHandler.init() || !sdlHandler.loadMedia("assets/images/Presentacion-progra.bmp")) {
+        std::cerr << "Error al inicializar SDL o cargar medios." << std::endl;
+        return 1;
+    }
 
-return 0;
+    while (!sdlHandler.shouldQuit()) {
+        sdlHandler.handleEvents();
+        sdlHandler.render();
+    }
+
+    sdlHandler.close();
+
+    return 0;
 }
+
