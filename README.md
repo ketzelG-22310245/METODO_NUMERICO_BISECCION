@@ -27,17 +27,11 @@ El sub-intervalo que contiene la función con un cambio de signo, se convierte e
 
 El proyecto se desarrollo sobre MinGW64 utilizando Msys2
 
-Para la instalacion de Msys2 seguir el siguiente tutorial:
-https://code.visualstudio.com/docs/cpp/config-ming
+Para la instalacion de Msys2 seguir el siguiente tutorial:                       https://code.visualstudio.com/docs/cpp/config-ming
 
-Libreria SDL2:
-https://packages.msys2.org/package/mingw-w64-x86_64-SDL2?repo=mingw64
-pacman -S mingw-w64-x86_64-SDL2
+Libreria SDL2:                                                                   https://packages.msys2.org/package/mingw-w64-x86_64-SDL2?repo=mingw64             pacman -S mingw-w64-x86_64-SDL2
 
-Libreria SDL2_mixer (Ya que no esta inluida en SDL2):
-https://packages.msys2.org/package/mingw-w64-x86_64-SDL2_mixer?repo=mingw64
-pacman -S mingw-w64-x86_64-SDL2_mixer
+Libreria SDL2_mixer (Ya que no esta inluida en SDL2):                            https://packages.msys2.org/package/mingw-w64-x86_64-SDL2_mixer?repo=mingw64         pacman -S mingw-w64-x86_64-SDL2_mixer
 
 # Autores
-Ketzel Gibran Carrillo Ibarra 22310245
-Jose Gerardo Guerrero Lopez 22310244
+Ketzel Gibran Carrillo Ibarra 22310245                                             Jose Gerardo Guerrero Lopez 22310244
