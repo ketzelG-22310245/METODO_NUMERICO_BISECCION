@@ -16,7 +16,7 @@ BisectionMethod::~BisectionMethod()
 
 void BisectionMethod::calculateRoots()
 {
-    const int MAX_ITERATIONS = 500;
+    const int MAX_ITERATIONS = 25;
 
     if (function(a) * function(b) > 0)
     {

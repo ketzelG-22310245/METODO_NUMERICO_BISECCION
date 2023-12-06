@@ -1,7 +1,7 @@
-LIBS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image
+LIBS = -lmingw32 -lSDL2main -lSDL2 -lSDL2_image -lSDL2_mixer
 INCLUDE_PATH = -Iinclude
 
-SRCS = src/main.cpp src/BisectionMethod.cpp src/Function.cpp src/SDLHandler.cpp
+SRCS = src/main.cpp src/BisectionMethod.cpp src/Function.cpp src/SDLHandler.cpp src/SDLMusicPlayer.cpp
 EXE = bin/METODO_NUMERICO_BISECCION
 
 # Crear el directorio bin si no existe

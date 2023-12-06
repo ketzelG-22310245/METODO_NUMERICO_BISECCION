@@ -1,0 +1,51 @@
+@startuml METODO_NUMERICO_BISECCION
+
+class BisectionMethod{
+    + CalculateRoots()
+    + INTERVALOS
+    - getInput()
+    - printPoints()
+    - function()
+    - a
+    - b
+    - tolerancia
+    - xr
+    - xr_antiguo
+    - x
+
+}
+
+class Function{
+    + evaluar()
+    + x
+}
+
+class SDLHandler{
+    + init()
+    + loadMedia()
+    + close()
+    + render()
+    + handleEvents()
+    + shouldQuit()
+    - SDL_Window *gWindow
+    - SDL_Surface *gScreenSurface
+    - SDL_Surface *gXOut
+    - Mix_Music* gMusic
+    - SDLMusicPlayer musicPlayer
+    - quit
+
+}
+
+class SDLMusicPlayer{
+    + loadMusic()
+    + play()
+    + pause()
+    + resume()
+    + stop()
+    - Mix_Music *music
+}
+
+BisectionMethod <-- Function
+main <-- BisectionMethod
+main <-- SDLHandler
+SDLHandler <-- SDLMusicPlayer

@@ -10,7 +10,7 @@ int main(int argc, char **argv)
     SDLHandler sdlHandler;
     BisectionMethod bisectionMethod;
 
-    if (!sdlHandler.init() || !sdlHandler.loadMedia("assets/images/Presentacion-progra.bmp"))
+    if (!sdlHandler.init() || !sdlHandler.loadMedia("assets/images/Presentacion-progra.bmp", "assets/music/himno-nacional-mexicano-oficial.mp3")) 
     {
         std::cerr << "Error al inicializar SDL o cargar medios." << std::endl;
         return 1;
