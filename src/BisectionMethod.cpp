@@ -27,7 +27,7 @@ void BisectionMethod::calculateRoots()
     {
         std::cout << "Tolerancia = " << tolerance << std::endl;
         std::cout << "\na\t\t\tb\t\t\tc\t\t\tf(c)\t\t\tEr\n"
-                  << std::fixed << std::setprecision(2) << std::endl;
+                  << std::fixed << std::setprecision(8) << std::endl;
 
         int iterationCount = 0; // Contador para realizar un seguimiento de las iteraciones
 
@@ -38,7 +38,7 @@ void BisectionMethod::calculateRoots()
             std::cout << function(xr) << "\t\t\t";
 
             double error_rel = (std::abs(xr - xr_antiguo) / std::abs(xr)) * 100.0;
-            std::cout << std::fixed << std::setprecision(2) << error_rel << "%" << std::endl;
+            std::cout << std::fixed << std::setprecision(8) << error_rel << "%" << std::endl;
 
             if (std::abs(function(xr)) <= tolerance || iterationCount >= MAX_ITERATIONS)
             {
@@ -94,7 +94,7 @@ void BisectionMethod::getInput()
     std::cin >> b;
 
     // tolerance = 1e-5; // Ajusta la tolerancia según tus necesidades
-    const int MAX_ITERATIONS = 500; // Ajusta el límite máximo de iteraciones según tus necesidades
+    const int MAX_ITERATIONS = 25; // Ajusta el límite máximo de iteraciones según tus necesidades
 
     if (function(a) * function(b) > 0)
     {
@@ -105,7 +105,7 @@ void BisectionMethod::getInput()
     {
         std::cout << "Tolerancia = " << tolerance << std::endl;
         std::cout << "\na\t\t\tb\t\t\tc\t\t\tf(c)\t\t\tEr\n"
-                  << std::fixed << std::setprecision(2) << std::endl;
+                  << std::fixed << std::setprecision(8) << std::endl;
 
         int iterationCount = 0; // Contador para realizar un seguimiento de las iteraciones
 
@@ -116,7 +116,7 @@ void BisectionMethod::getInput()
             std::cout << function(xr) << "\t\t\t";
 
             double error_rel = (std::abs(xr - xr_antiguo) / std::abs(xr)) * 100.0;
-            std::cout << std::fixed << std::setprecision(2) << error_rel << "%" << std::endl;
+            std::cout << std::fixed << std::setprecision(8) << error_rel << "%" << std::endl;
 
             if (std::abs(function(xr)) <= tolerance || iterationCount >= MAX_ITERATIONS)
             {
